@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:service_center/views/pages/homepageTabs/tab_one.dart';
-import 'package:service_center/views/pages/homepageTabs/tab_three.dart';
-import 'package:service_center/views/pages/homepageTabs/tab_two.dart';
+import 'package:service_center/utils/constants.dart';
+import 'package:service_center/utils/shared_prefs.dart';
+import 'package:service_center/views/pages/homepageTabs/profile/profile.dart';
+import 'package:service_center/views/pages/homepageTabs/home_page.dart';
+import 'package:service_center/views/pages/homepageTabs/bookings.dart';
+import 'package:service_center/views/pages/homepageTabs/services.dart';
 import 'package:tabnavigator/tabnavigator.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,13 +25,16 @@ class _MyHomePageState extends State<HomePage> {
 
   final _map = <AppTab, TabBuilder>{
     AppTab.home: () {
-      return TabOne();
+      return const Home();
     },
-    AppTab.colors: () {
-      return const TabTwo();
+    AppTab.services: () {
+      return const Services();
     },
-    AppTab.info: () {
-      return TabThree();
+    // AppTab.bookings: () {
+    //   return ProfilePage();
+    // },
+    AppTab.profile: () {
+      return ProfilePage();
     }
   };
 
@@ -48,17 +54,17 @@ class _MyHomePageState extends State<HomePage> {
         return BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              icon: Icon(Icons.home),
-              label: 'Home',
-            ),
+                icon: Icon(Icons.home, color: primaryColor), label: 'Home'),
             BottomNavigationBarItem(
-              icon: Icon(Icons.tab),
-              label: 'Bookings',
-            ),
+                icon: Icon(Icons.car_repair_rounded, color: primaryColor),
+                label: 'Services'),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.calendar_view_day),
+            //   label: 'Bookings',
+            // ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.person),
-              label: 'Profile',
-            ),
+                icon: Icon(Icons.person, color: primaryColor),
+                label: 'Profile'),
           ],
           currentIndex: snapshot.hasData ? snapshot.data!.value : 0,
           onTap: (value) => _tabController.sink.add(AppTab.byValue(value)),
@@ -86,17 +92,17 @@ class AppTab extends TabType {
   const AppTab._(int value) : super(value);
 
   static const home = AppTab._(0);
-  static const colors = AppTab._(1);
-  static const info = AppTab._(2);
+  static const services = AppTab._(1);
+  static const profile = AppTab._(2);
 
   static AppTab byValue(int value) {
     switch (value) {
       case 0:
         return home;
       case 1:
-        return colors;
+        return services;
       case 2:
-        return info;
+        return profile;
       default:
         throw Exception('no tab for such value');
     }

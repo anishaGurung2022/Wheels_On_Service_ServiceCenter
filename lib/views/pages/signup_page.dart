@@ -102,7 +102,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             ),
                             Expanded(
                               child: Text(
-                                'Select Category',
+                                'Select City',
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Colors.black,

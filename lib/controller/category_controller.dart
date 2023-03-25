@@ -1,16 +1,17 @@
 import 'dart:convert';
 import 'package:get/get.dart';
-import 'package:service_center/model/city_model.dart';
-import 'package:service_center/utils/api.dart';
-import 'package:service_center/utils/shared_prefs.dart';
 import 'package:http/http.dart' as http;
+import 'package:service_center/model/category_model.dart';
+import 'package:service_center/utils/api.dart';
+import 'package:service_center/utils/constants.dart';
+import 'package:service_center/utils/shared_prefs.dart';
 
-class CitiesController extends GetxController {
+class CategoryController extends GetxController {
   var loading = false.obs;
-  static var selectedCity = Cities(id: "", name: "").obs;
+  var selectedCategory = Category(id: "", name: "", description: "").obs;
 
   //getting the category details by creating model
-  static var cities = <Cities>[].obs;
+  var categories = <Category>[].obs;
 
   @override
   void onInit() {
@@ -22,17 +23,18 @@ class CitiesController extends GetxController {
 
   //GET categories from database
   get() async {
-    var url = Uri.parse(GET_CITIES_API);
+    var url = Uri.parse(GET_CATEGORIES_API);
     var response = await http.get(url);
     if (response.statusCode == 200) {
-      var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
+      var jsonResponse = jsonDecode(response.body); //as Map<String, dynamic>;
       if (jsonResponse["success"]) {
         var responseData = jsonResponse['data'];
         for (var i = 0; i < responseData.length; i++) {
-          cities.add(Cities.fromJson(responseData[i]));
+          categories.add(Category.fromJson(responseData[i]));
         }
-        selectedCity.value = cities.value[0];
-        Get.back();
+        selectedCategory.value = categories.value[0];
+        //print(categories);
+        //Get.back();
         //showMessage(title: "Success", message: jsonResponse["message"]);
       } else {
         //showMessage(title: "Error", message: jsonResponse["message"], isSuccess: false);

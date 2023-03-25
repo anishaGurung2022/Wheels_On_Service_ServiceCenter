@@ -24,7 +24,7 @@ class MyField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
-        elevation: 20.0,
+        //elevation: 10.0,
         child: TextFormField(
           cursorWidth: 15,
           controller: controller,
@@ -32,7 +32,9 @@ class MyField extends StatelessWidget {
           decoration: InputDecoration(
               labelText: labelText,
               hintText: hintText,
-              border: const OutlineInputBorder(),
+              enabledBorder: const OutlineInputBorder(
+                borderSide: BorderSide(width: 1, color: Colors.grey),
+              ),
               prefixIcon: prefixIcon),
           validator: (value) {
             if (value!.isEmpty) {

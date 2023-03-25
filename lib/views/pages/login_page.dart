@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
                 //const SizedBox(height: 20),
                 Container(
                     height: 300,
-                    width: 370,
+                    width: 350,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                     ),
@@ -47,31 +47,25 @@ class LoginPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: textColor)),
                 const SizedBox(height: 20),
-                SizedBox(
-                  height: 80,
-                  child: MyField(
-                    controller: emailController,
-                    labelText: 'Email',
-                    prefixIcon: Icon(Icons.email),
-                    myTextValidator: (value) {
-                      if (!value.toString().contains("@")) {
-                        return "Email is not valid";
-                      }
-                      return null;
-                    },
-                  ),
+                MyField(
+                  controller: emailController,
+                  labelText: 'Email',
+                  prefixIcon: Icon(Icons.email),
+                  myTextValidator: (value) {
+                    if (!value.toString().contains("@")) {
+                      return "Email is not valid";
+                    }
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 20),
-                SizedBox(
-                  height: 80,
-                  child: MyField(
-                    controller: passwordController,
-                    labelText: 'Password',
-                    obscureText: true,
-                    myTextValidator: (value) {
-                      return null;
-                    },
-                  ),
+                MyField(
+                  controller: passwordController,
+                  labelText: 'Password',
+                  obscureText: true,
+                  myTextValidator: (value) {
+                    return null;
+                  },
                 ),
                 const SizedBox(height: 20),
                 SizedBox(
