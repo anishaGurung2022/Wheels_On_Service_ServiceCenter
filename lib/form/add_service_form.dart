@@ -205,11 +205,10 @@ class _AddEditServiceFormState extends State<AddEditServiceForm> {
                         onTap: () async {
                           var result = await serviceCenterController
                               .getServiceCenterID();
-                          print(result);
+                          //print(result);
 
                           var selectedCategory =
                               categoryController.selectedCategory.toJson();
-                          print(selectedCategory);
 
                           if (_formKey.currentState!.validate()) {
                             var data = {

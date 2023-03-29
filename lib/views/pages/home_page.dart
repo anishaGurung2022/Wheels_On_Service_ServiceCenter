@@ -1,11 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:service_center/utils/constants.dart';
-import 'package:service_center/utils/shared_prefs.dart';
+import 'package:service_center/views/pages/homepageTabs/bookings.dart';
 import 'package:service_center/views/pages/homepageTabs/profile/profile.dart';
 import 'package:service_center/views/pages/homepageTabs/home_page.dart';
-import 'package:service_center/views/pages/homepageTabs/bookings.dart';
-import 'package:service_center/views/pages/homepageTabs/services.dart';
 import 'package:tabnavigator/tabnavigator.dart';
 
 class HomePage extends StatefulWidget {
@@ -25,10 +23,10 @@ class _MyHomePageState extends State<HomePage> {
 
   final _map = <AppTab, TabBuilder>{
     AppTab.home: () {
-      return const Home();
+      return Home();
     },
     AppTab.services: () {
-      return const Services();
+      return Bookings();
     },
     // AppTab.bookings: () {
     //   return ProfilePage();
@@ -57,7 +55,7 @@ class _MyHomePageState extends State<HomePage> {
                 icon: Icon(Icons.home, color: primaryColor), label: 'Home'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.car_repair_rounded, color: primaryColor),
-                label: 'Services'),
+                label: 'Bookings'),
             // BottomNavigationBarItem(
             //   icon: Icon(Icons.calendar_view_day),
             //   label: 'Bookings',

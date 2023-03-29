@@ -1,13 +1,17 @@
-//import 'package:flutter/src/widgets/container.dart';
-//import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:service_center/controller/authentication_controller.dart';
+import 'package:service_center/controller/serviceCenter_controller.dart';
+import 'package:service_center/model/serviceCenter_model.dart';
 import 'package:service_center/utils/constants.dart';
 import 'package:service_center/views/components/my_button.dart';
+import 'package:service_center/views/components/profile_component.dart';
+import 'package:service_center/views/components/service_component.dart';
 
 class ProfilePage extends StatelessWidget {
   final authentication = Get.find<Authentication>();
+  final ServiceCenterController serviceCenterController =
+      Get.put(ServiceCenterController());
   ProfilePage({super.key});
 
   @override
@@ -18,19 +22,11 @@ class ProfilePage extends StatelessWidget {
           title: const Text("Profile"),
           backgroundColor: primaryColor,
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: const [
-              SizedBox(
-                width: 200,
-                height: 200,
-                child: Image(
-                  image: AssetImage('assets/images/profile_pic.png'),
-                ),
-              )
-            ],
-          ),
-        ),
+        body: Obx(() => Wrap(
+            children: serviceCenterController.serviceCenterDetails.value
+                .map((ServiceCenter serviceCenterDetails) =>
+                    ProfileComponent(serviceCenter: serviceCenterDetails))
+                .toList())),
       ),
     );
   }

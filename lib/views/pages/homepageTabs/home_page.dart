@@ -1,12 +1,15 @@
 //import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
-//import 'package:get/get.dart';
+import 'package:get/get.dart';
+import 'package:service_center/controller/service_controller.dart';
+import 'package:service_center/model/service_model.dart';
 import 'package:service_center/utils/constants.dart';
+import 'package:service_center/views/components/service_component.dart';
 
 class Home extends StatelessWidget {
-  // final ProductController productController = Get.put(ProductController());
+  final ServiceController serviceController = Get.put(ServiceController());
   // final CartController cartController = Get.find<CartController>();
-  const Home({Key? key}) : super(key: key);
+  Home({Key? key}) : super(key: key);
 
   @override
   //Services page(user can see all services)
@@ -27,14 +30,18 @@ class Home extends StatelessWidget {
               //     child: const Icon(Icons.shopping_cart),
               //   ),
               // ),
+              child: const InkWell(
+                child: Icon(Icons.notifications),
+              ),
             ),
           ],
         ),
-        // body: Obx(() => Wrap(
-        //       children: productController.products.value
-        //           .map((Product product) => ProductComponent(product: product))
-        //           .toList(),
-        //     )),
+        body: Obx(() => Wrap(
+              children: serviceController.services.value
+                  .map((Services services) =>
+                      ServiceComponent(service: services))
+                  .toList(),
+            )),
       ),
     );
   }

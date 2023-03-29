@@ -28,7 +28,7 @@ class LoginPage extends StatelessWidget {
               children: [
                 //const SizedBox(height: 20),
                 Container(
-                    height: 300,
+                    height: 250,
                     width: 350,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
@@ -38,7 +38,7 @@ class LoginPage extends StatelessWidget {
                           color: Colors.white,
                           shape: BoxShape.rectangle,
                           image: DecorationImage(
-                              image: AssetImage('assets/images/logo.png'),
+                              image: AssetImage('assets/images/logo.jpg'),
                               fit: BoxFit.fill)),
                     )),
                 const Text("Sign In",

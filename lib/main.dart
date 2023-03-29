@@ -4,6 +4,7 @@ import 'package:service_center/controller/authentication_controller.dart';
 import 'package:service_center/controller/category_controller.dart';
 import 'package:service_center/controller/city_controller.dart';
 import 'package:service_center/controller/serviceCenter_controller.dart';
+import 'package:service_center/controller/service_controller.dart';
 import 'package:service_center/form/add_service_form.dart';
 import 'package:service_center/views/pages/login_page.dart';
 //import 'package:service_center/controller/service_controller.dart';
@@ -17,6 +18,7 @@ Future<void> main() async {
   Get.put(CitiesController()); // fetches cities
   Get.put(CategoryController());
   Get.put(ServiceCenterController());
+  Get.put(ServiceController());
   //fetches categories
   // Get.put(CartController());
   runApp(GetMaterialApp(
