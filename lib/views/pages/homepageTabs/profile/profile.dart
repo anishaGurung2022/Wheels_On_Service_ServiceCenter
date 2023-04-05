@@ -4,9 +4,7 @@ import 'package:service_center/controller/authentication_controller.dart';
 import 'package:service_center/controller/serviceCenter_controller.dart';
 import 'package:service_center/model/serviceCenter_model.dart';
 import 'package:service_center/utils/constants.dart';
-import 'package:service_center/views/components/my_button.dart';
 import 'package:service_center/views/components/profile_component.dart';
-import 'package:service_center/views/components/service_component.dart';
 
 class ProfilePage extends StatelessWidget {
   final authentication = Get.find<Authentication>();

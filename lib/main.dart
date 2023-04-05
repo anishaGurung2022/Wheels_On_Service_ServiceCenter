@@ -11,10 +11,8 @@ Future<void> main() async {
   //calling the GetX Controller classes so that data are fetched in start
   Get.put(Authentication()); //fetches token
   Get.put(CitiesController()); // fetches cities
-  Get.put(CategoryController());
-  //Get.put(ServiceCenterController());
-  Get.put(ServiceController());
-  //fetches categories
+  Get.put(CategoryController()); // fetch categories
+  //Get.put(ServiceController());
   // Get.put(CartController());
   runApp(GetMaterialApp(
     home: LoginPage(),

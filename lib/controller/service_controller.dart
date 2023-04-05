@@ -14,15 +14,16 @@ class ServiceController extends GetxController {
   final AuthService authService = AuthService();
   var services = <Services>[].obs;
 
-  void onInit() {
+  void onInit() async {
     super.onInit();
-    //get();
+    var token_ = await authService.getToken();
+    get(token_);
   }
 
-  get() async {
+  get(token_) async {
     loading.value = true;
     var url = Uri.parse(GET_SERVICE_API);
-    var token_ = await authService.getToken();
+    //var token_ = await authService.getToken();
     var response = await http.post(url, body: {"token": token_});
     loading.value = false;
     if (response.statusCode == 200) {

@@ -108,11 +108,11 @@ class ProfileComponent extends StatelessWidget {
                               fontSize: 20, fontWeight: FontWeight.bold)),
                     ),
                   ),
-                  const SizedBox(
+                  SizedBox(
                     width: 200,
                     child: MyButton(
                       buttonName: 'Edit Profile',
-                      //onTap: () => logout(),
+                      onTap: () => logout(),
                     ),
                   ),
                   SizedBox(

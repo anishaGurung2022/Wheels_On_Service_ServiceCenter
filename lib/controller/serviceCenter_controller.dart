@@ -12,6 +12,13 @@ class ServiceCenterController extends GetxController {
   final AuthService authService = AuthService();
   var serviceCenterDetails = <ServiceCenter>[].obs;
 
+  void onInit() async {
+    super.onInit();
+    var token_ = await authService.getToken();
+    getServiceCenterDetails(token_);
+    getServiceCenterID();
+  }
+
   getServiceCenterID() async {
     try {
       var url = Uri.parse(SERVICE_CENTER_ID);
@@ -38,13 +45,14 @@ class ServiceCenterController extends GetxController {
     }
   }
 
-  getServiceCenterDetails() async {
+  getServiceCenterDetails(token_) async {
     var url = Uri.parse(SERVICE_CENTER_DETAILS);
-    var token_ = await authService.getToken();
+    //var token_ = await authService.getToken();
     var response = await http.post(url, body: {"token": token_});
     if (response.statusCode == 200) {
       var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
       if (jsonResponse["success"]) {
+        print(jsonResponse);
         serviceCenterDetails.value = (jsonResponse["data"] as List)
             .map((e) => ServiceCenter.fromJson(e))
             .toList();
