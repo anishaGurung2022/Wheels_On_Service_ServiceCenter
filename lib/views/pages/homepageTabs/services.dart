@@ -35,7 +35,7 @@ class ServicesPage extends StatelessWidget {
           Column(
             children: [
               Image.network("$baseUrl/${service.image}", height: 200),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
               Container(

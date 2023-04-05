@@ -3,13 +3,8 @@ import 'package:get/get.dart';
 import 'package:service_center/controller/authentication_controller.dart';
 import 'package:service_center/controller/category_controller.dart';
 import 'package:service_center/controller/city_controller.dart';
-import 'package:service_center/controller/serviceCenter_controller.dart';
 import 'package:service_center/controller/service_controller.dart';
-import 'package:service_center/form/add_service_form.dart';
 import 'package:service_center/views/pages/login_page.dart';
-//import 'package:service_center/controller/service_controller.dart';
-//import 'package:service_center/views/pages/home_page.dart';
-//import 'package:service_center/views/pages/login_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,13 +12,11 @@ Future<void> main() async {
   Get.put(Authentication()); //fetches token
   Get.put(CitiesController()); // fetches cities
   Get.put(CategoryController());
-  Get.put(ServiceCenterController());
+  //Get.put(ServiceCenterController());
   Get.put(ServiceController());
   //fetches categories
   // Get.put(CartController());
   runApp(GetMaterialApp(
-    //home: AddEditServiceForm(),
-    //home: HomePage(),
     home: LoginPage(),
     debugShowCheckedModeBanner: false,
   ));

@@ -28,8 +28,8 @@ class LoginPage extends StatelessWidget {
               children: [
                 //const SizedBox(height: 20),
                 Container(
-                    height: 250,
-                    width: 350,
+                    height: 170,
+                    width: 270,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(100),
                     ),

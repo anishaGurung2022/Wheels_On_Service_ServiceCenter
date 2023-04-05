@@ -16,7 +16,7 @@ class ServiceController extends GetxController {
 
   void onInit() {
     super.onInit();
-    get();
+    //get();
   }
 
   get() async {
