@@ -45,7 +45,7 @@ class ServiceController extends GetxController {
 
   add(data, PickedFile? file) async {
     loading.value = true;
-    //data['token'] = (await authService.getToken());
+    data['token'] = (await authService.getToken());
     var url = Uri.parse(ADD_SERVICE_API);
 
     //multipart that takes file
@@ -55,12 +55,44 @@ class ServiceController extends GetxController {
     if (file != null) {
       var pic = await http.MultipartFile.fromPath('image', file.path);
       request.files.add(pic);
-      print(pic);
     }
     var response = await request.send();
     if (response.statusCode == 200) {
+      var token_ = await authService.getToken();
+      get(token_);
       var decodedResponse = jsonDecode(await response.stream.bytesToString());
+      if (decodedResponse['success']) {
+        Get.back();
+        showMessage(message: decodedResponse["message"], title: 'Success');
+      } else {
+        showMessage(
+            message: decodedResponse["message"],
+            isSuccess: false,
+            title: 'Error');
+      }
+    } else {
+      print('Request failed with status: ${response.statusCode}.');
+    }
+  }
 
+  updateService(data, PickedFile? file) async {
+    loading.value = true;
+    data['token'] = (await authService.getToken());
+    var url = Uri.parse(ADD_SERVICE_API);
+
+    //multipart that takes file
+    var request = http.MultipartRequest('POST', url);
+    request.fields.addAll(data);
+    print(data);
+    if (file != null) {
+      var pic = await http.MultipartFile.fromPath('image', file.path);
+      request.files.add(pic);
+    }
+    var response = await request.send();
+    if (response.statusCode == 200) {
+      var token_ = await authService.getToken();
+      get(token_);
+      var decodedResponse = jsonDecode(await response.stream.bytesToString());
       if (decodedResponse['success']) {
         Get.back();
         showMessage(message: decodedResponse["message"], title: 'Success');

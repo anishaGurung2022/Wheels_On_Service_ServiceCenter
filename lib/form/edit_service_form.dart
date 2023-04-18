@@ -13,14 +13,14 @@ import 'package:service_center/utils/shared_prefs.dart';
 import 'package:service_center/views/components/my_button.dart';
 import 'package:service_center/views/components/my_field.dart';
 
-class AddEditServiceForm extends StatefulWidget {
-  const AddEditServiceForm({super.key});
+class EditServiceForm extends StatefulWidget {
+  const EditServiceForm({super.key});
 
   @override
-  State<AddEditServiceForm> createState() => _AddEditServiceFormState();
+  State<EditServiceForm> createState() => _AddEditServiceFormState();
 }
 
-class _AddEditServiceFormState extends State<AddEditServiceForm> {
+class _AddEditServiceFormState extends State<EditServiceForm> {
   final ImagePicker _picker = ImagePicker();
   AuthService authService = AuthService();
   PickedFile? pickedFile;
@@ -219,10 +219,6 @@ class _AddEditServiceFormState extends State<AddEditServiceForm> {
                           height: 70,
                           child: MyButton(
                               onTap: () async {
-                                var result = await serviceCenterController
-                                    .getServiceCenterID();
-                                print(result);
-
                                 var selectedCategory = categoryController
                                     .selectedCategory
                                     .toJson();

@@ -41,36 +41,106 @@ class LoginPage extends StatelessWidget {
                               image: AssetImage('assets/images/logo.jpg'),
                               fit: BoxFit.fill)),
                     )),
-                const Text("Sign In",
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: textColor)),
-                const SizedBox(height: 20),
-                MyField(
-                  controller: emailController,
-                  labelText: 'Email',
-                  prefixIcon: Icon(Icons.email),
-                  myTextValidator: (value) {
-                    if (!value.toString().contains("@")) {
-                      return "Email is not valid";
-                    }
-                    return null;
-                  },
+                const Padding(
+                  padding:
+                      EdgeInsets.only(left: 20, bottom: 0, right: 20, top: 10),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text.rich(
+                      TextSpan(
+                        style: TextStyle(
+                          fontFamily: 'Segoe UI',
+                          fontSize: 30,
+                          color: Color(0xffffffff),
+                          height: 2,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: 'Welcome!',
+                            style: TextStyle(
+                              fontSize: 35,
+                              color: Color(0xff121212),
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                        ],
+                      ),
+                      textHeightBehavior:
+                          TextHeightBehavior(applyHeightToFirstAscent: false),
+                      softWrap: false,
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 20),
-                MyField(
-                  controller: passwordController,
-                  labelText: 'Password',
-                  obscureText: true,
-                  myTextValidator: (value) {
-                    return null;
-                  },
+                const Padding(
+                  padding:
+                      EdgeInsets.only(left: 25, bottom: 0, right: 20, top: 10),
+                  child: Align(
+                    alignment: Alignment.topLeft,
+                    child: Text(
+                      'Sign to your account',
+                      style: TextStyle(
+                        fontFamily: 'Segoe UI',
+                        fontSize: 22,
+                        color: Color.fromARGB(255, 151, 149, 149),
+                        fontWeight: FontWeight.w400,
+                        height: 2.8,
+                      ),
+                      textHeightBehavior:
+                          TextHeightBehavior(applyHeightToFirstAscent: false),
+                      softWrap: false,
+                    ),
+                  ),
                 ),
-                const SizedBox(height: 20),
+                //const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MyField(
+                    controller: emailController,
+                    labelText: 'Email',
+                    prefixIcon: Icon(Icons.email),
+                    myTextValidator: (value) {
+                      if (!value.toString().contains("@")) {
+                        return "Email is not valid";
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                //const SizedBox(height: 20),
+
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: MyField(
+                    controller: passwordController,
+                    labelText: 'Password',
+                    obscureText: true,
+                    myTextValidator: (value) {
+                      return null;
+                    },
+                  ),
+                ),
+                const Padding(
+                  padding:
+                      EdgeInsets.only(left: 15, bottom: 0, right: 20, top: 10),
+                  child: Align(
+                    alignment: Alignment.bottomLeft,
+                    child: Text(
+                      'forgot Password?',
+                      style: TextStyle(
+                        fontFamily: 'Segoe UI',
+                        fontSize: 18,
+                        color: Color(0xfff77931),
+                        fontWeight: FontWeight.w700,
+                        height: 3.5,
+                      ),
+                      textHeightBehavior:
+                          TextHeightBehavior(applyHeightToFirstAscent: false),
+                      softWrap: false,
+                    ),
+                  ),
+                ),
                 SizedBox(
-                  height: 70,
-                  width: 200,
+                  width: 350,
                   child: MyButton(
                       onTap: () {
                         var isFormValid = formKey.currentState!.validate();
@@ -84,21 +154,26 @@ class LoginPage extends StatelessWidget {
                       },
                       buttonName: "Login"),
                 ),
+
                 const SizedBox(height: 20),
-                const Text("Don't have an account?",
-                    style: TextStyle(fontSize: 20, color: textColor)),
-                const SizedBox(height: 20),
-                InkWell(
-                  onTap: () {
-                    Get.to(RegistrationPage());
-                  },
-                  child: const Text("Register Account",
-                      style: TextStyle(
-                        color: textColor,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        decoration: TextDecoration.underline,
-                      )),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Text("Don't have an account?",
+                        style: TextStyle(fontSize: 18, color: textColor)),
+                    InkWell(
+                      onTap: () {
+                        Get.to(RegistrationPage());
+                      },
+                      child: const Text("Sign Up",
+                          style: TextStyle(
+                            color: primaryColor,
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            decoration: TextDecoration.underline,
+                          )),
+                    ),
+                  ],
                 ),
               ],
             ),

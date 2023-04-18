@@ -14,8 +14,8 @@ class Services {
     required this.name,
     required this.description,
     required this.price,
-    required this.categoryId,
     required this.serviceCenterId,
+    required this.category,
     required this.image,
   });
 
@@ -23,8 +23,8 @@ class Services {
   String name;
   String description;
   String price;
-  String categoryId;
   String serviceCenterId;
+  String category;
   String image;
 
   factory Services.fromJson(Map<String, dynamic> json) => Services(
@@ -32,8 +32,8 @@ class Services {
         name: json["name"],
         description: json["description"],
         price: json["price"],
-        categoryId: json["category_id"],
         serviceCenterId: json["serviceCenter_id"],
+        category: json["category"],
         image: json["image"],
       );
 
@@ -42,8 +42,8 @@ class Services {
         "name": name,
         "description": description,
         "price": price,
-        "category_id": categoryId,
         "serviceCenter_id": serviceCenterId,
+        "category": category,
         "image": image,
       };
 }

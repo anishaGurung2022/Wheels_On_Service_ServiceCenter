@@ -28,9 +28,6 @@ class _MyHomePageState extends State<HomePage> {
     AppTab.services: () {
       return Bookings();
     },
-    // AppTab.bookings: () {
-    //   return ProfilePage();
-    // },
     AppTab.profile: () {
       return ProfilePage();
     }
@@ -50,19 +47,19 @@ class _MyHomePageState extends State<HomePage> {
       initialData: _initTab,
       builder: (context, snapshot) {
         return BottomNavigationBar(
+          backgroundColor: primaryColor,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Icons.home, color: primaryColor), label: 'Home'),
+                icon: Icon(Icons.home, color: Colors.white),
+                label: 'Home',
+                backgroundColor: primaryColor),
             BottomNavigationBarItem(
-                icon: Icon(Icons.car_repair_rounded, color: primaryColor),
+                icon: Icon(Icons.car_repair_rounded, color: Colors.white),
                 label: 'Bookings'),
-            // BottomNavigationBarItem(
-            //   icon: Icon(Icons.calendar_view_day),
-            //   label: 'Bookings',
-            // ),
             BottomNavigationBarItem(
-                icon: Icon(Icons.person, color: primaryColor),
-                label: 'Profile'),
+                icon: Icon(Icons.person, color: Colors.white),
+                label: 'Profile',
+                backgroundColor: primaryColor),
           ],
           currentIndex: snapshot.hasData ? snapshot.data!.value : 0,
           onTap: (value) => _tabController.sink.add(AppTab.byValue(value)),

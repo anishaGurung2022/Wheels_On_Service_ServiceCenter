@@ -16,6 +16,9 @@ class Bookings extends StatelessWidget {
           actions: [
             Container(
               padding: const EdgeInsets.only(right: 60),
+              child: const InkWell(
+                child: Icon(Icons.notifications),
+              ),
               // child: InkWell(
               //   onTap: () => Get.to(() => CartPage()),
               //   child: Badge(

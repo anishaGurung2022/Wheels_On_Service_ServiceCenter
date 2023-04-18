@@ -1,4 +1,4 @@
-const baseUrl = "http://192.168.1.9/wheelsOnService_api";
+const baseUrl = "http://192.168.1.2/wheelsOnService_api";
 
 const LOGIN_API = "$baseUrl/serviceCenter_login.php";
 const SIGNUP_API = "$baseUrl/serviceCenter_signup.php";
@@ -9,6 +9,4 @@ const ADD_SERVICE_API = "$baseUrl/addService.php";
 const SERVICE_CENTER_ID = "$baseUrl/getServiceCenter_id.php";
 const GET_SERVICE_API = "$baseUrl/getServiceCen_Services.php";
 const SERVICE_CENTER_DETAILS = "$baseUrl/getServiceCenterDetails.php";
-
-// const GET_PRODUCTS_API = "$baseUrl/getProducts.php";
-// const PLACE_ORDER_API = "$baseUrl/placeOrder.php";
+const EDIT_SERVICE_API = "$baseUrl/editService.php";
