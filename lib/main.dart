@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:service_center/controller/authentication_controller.dart';
+import 'package:service_center/controller/booking_controller.dart';
 import 'package:service_center/controller/category_controller.dart';
 import 'package:service_center/controller/city_controller.dart';
 import 'package:service_center/controller/service_controller.dart';
+import 'package:service_center/views/pages/loader.dart';
 import 'package:service_center/views/pages/login_page.dart';
 
 Future<void> main() async {
@@ -12,10 +14,8 @@ Future<void> main() async {
   Get.put(Authentication()); //fetches token
   Get.put(CitiesController()); // fetches cities
   Get.put(CategoryController()); // fetch categories
-  //Get.put(ServiceController());
-  // Get.put(CartController());
-  runApp(GetMaterialApp(
-    home: LoginPage(),
+  runApp(const GetMaterialApp(
+    home: Loader(),
     debugShowCheckedModeBanner: false,
   ));
 }

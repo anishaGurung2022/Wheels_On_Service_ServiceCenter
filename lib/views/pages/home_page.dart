@@ -26,7 +26,7 @@ class _MyHomePageState extends State<HomePage> {
       return Home();
     },
     AppTab.services: () {
-      return Bookings();
+      return BookingPage();
     },
     AppTab.profile: () {
       return ProfilePage();

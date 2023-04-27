@@ -71,10 +71,10 @@ class Authentication extends GetxController {
       if (jsonResponse["success"]) {
         await authService.removeToken();
         Get.offAll(const Loader());
-        showMessage(
-            title: "Success",
-            message: jsonResponse["message"],
-            isSuccess: true);
+        // showMessage(
+        //     title: "Success",
+        //     message: jsonResponse["message"],
+        //     isSuccess: true);
       } else {
         showMessage(
             title: "Error", message: jsonResponse["message"], isSuccess: false);

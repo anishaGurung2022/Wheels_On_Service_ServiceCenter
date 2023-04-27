@@ -19,6 +19,7 @@ class ServiceCenter {
     required this.email,
     required this.userName,
     required this.password,
+    required this.image,
   });
 
   String id;
@@ -29,6 +30,7 @@ class ServiceCenter {
   String email;
   String userName;
   String password;
+  String image;
 
   factory ServiceCenter.fromJson(Map<String, dynamic> json) => ServiceCenter(
         id: json["id"],
@@ -39,6 +41,7 @@ class ServiceCenter {
         email: json["email"],
         userName: json["userName"],
         password: json["password"],
+        image: json["image"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -50,5 +53,6 @@ class ServiceCenter {
         "email": email,
         "userName": userName,
         "password": password,
+        "image": image,
       };
 }

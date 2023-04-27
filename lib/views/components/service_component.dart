@@ -41,8 +41,6 @@ class ServiceComponent extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    //Text(service.price),
-                    //Text(service.description)
                   ],
                 )),
           ),

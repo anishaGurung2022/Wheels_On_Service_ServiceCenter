@@ -46,7 +46,7 @@ class _AddEditServiceFormState extends State<AddEditServiceForm> {
           title: const Text(
             "Add Service",
             style: TextStyle(
-                fontSize: 30,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
                 color: backgroundColor),
           ),

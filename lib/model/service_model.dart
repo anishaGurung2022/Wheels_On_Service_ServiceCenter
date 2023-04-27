@@ -17,6 +17,7 @@ class Services {
     required this.serviceCenterId,
     required this.category,
     required this.image,
+    required this.activeStatus,
   });
 
   String id;
@@ -26,6 +27,7 @@ class Services {
   String serviceCenterId;
   String category;
   String image;
+  String activeStatus;
 
   factory Services.fromJson(Map<String, dynamic> json) => Services(
         id: json["id"],
@@ -35,6 +37,7 @@ class Services {
         serviceCenterId: json["serviceCenter_id"],
         category: json["category"],
         image: json["image"],
+        activeStatus: json["active_status"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -45,5 +48,6 @@ class Services {
         "serviceCenter_id": serviceCenterId,
         "category": category,
         "image": image,
+        "active_status": activeStatus,
       };
 }

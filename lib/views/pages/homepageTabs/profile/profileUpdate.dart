@@ -21,19 +21,19 @@ class ProfileUpdatePage extends StatelessWidget {
         body: SingleChildScrollView(
           child: Column(
             // mainAxisAlignment: MainAxisAlignment.c,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: 200,
-                    child: MyButton(
-                      buttonName: 'Logout',
-                      onTap: () => logout(),
-                    ),
-                  ),
-                ],
-              ),
+            children: const [
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     SizedBox(
+              //       width: 200,
+              //       child: MyButton(
+              //         buttonName: 'Logout',
+              //         onTap: () => logout(),
+              //       ),
+              //     ),
+              //   ],
+              // ),
             ],
           ),
         ),

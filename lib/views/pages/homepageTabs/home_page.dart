@@ -31,9 +31,9 @@ class Home extends StatelessWidget {
               //     child: const Icon(Icons.shopping_cart),
               //   ),
               // ),
-              child: const InkWell(
-                child: Icon(Icons.notifications),
-              ),
+              // child: const InkWell(
+              //   child: Icon(Icons.notifications),
+              // ),
             ),
           ],
         ),
@@ -46,95 +46,109 @@ class Home extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          Row(
+                      child: SizedBox(
+                        height: 250,
+                        child: SingleChildScrollView(
+                          child: Column(
                             children: [
-                              const Text(
-                                "Bike Services",
-                                style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: primaryColor),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text(
+                                    "Bike Services",
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: primaryColor),
+                                  ),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.to(const AddEditServiceForm());
+                                    },
+                                    child: const Text(
+                                      " + Add more",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: primaryColor),
+                                    ),
+                                  )
+                                ],
                               ),
                               const SizedBox(
-                                width: 120,
+                                height: 10,
                               ),
-                              InkWell(
-                                onTap: () {
-                                  Get.to(const AddEditServiceForm());
-                                },
-                                child: const Text(
-                                  " + Add more",
-                                  style: TextStyle(
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.bold,
-                                      color: primaryColor),
-                                ),
-                              )
-                            ],
-                          ),
-                          SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Column(
-                              children: [
-                                Row(
+                              SingleChildScrollView(
+                                scrollDirection: Axis.horizontal,
+                                child: Column(
                                   children: [
-                                    getBikeServices(),
+                                    Row(
+                                      children: [
+                                        getBikeServices(),
+                                      ],
+                                    ),
                                   ],
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
                     //const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          Row(
+                      child: SizedBox(
+                        height: 550,
+                        child: SingleChildScrollView(
+                          child: Column(
                             children: [
-                              const Text(
-                                "Car Services",
-                                style: TextStyle(
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold,
-                                    color: primaryColor),
-                              ),
-                              const SizedBox(
-                                width: 120,
-                              ),
-                              InkWell(
-                                onTap: () {
-                                  Get.to(const AddEditServiceForm());
-                                },
-                                child: const Text(
-                                  " + Add more",
-                                  style: TextStyle(
-                                      fontSize: 19,
-                                      fontWeight: FontWeight.bold,
-                                      color: primaryColor),
-                                ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            child: SingleChildScrollView(
-                              scrollDirection: Axis.horizontal,
-                              child: Column(
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
-                                  Row(
-                                    children: [
-                                      getCarServices(),
-                                    ],
+                                  const Text(
+                                    "Car Services",
+                                    style: TextStyle(
+                                        fontSize: 25,
+                                        fontWeight: FontWeight.bold,
+                                        color: primaryColor),
                                   ),
+                                  InkWell(
+                                    onTap: () {
+                                      Get.to(const AddEditServiceForm());
+                                    },
+                                    child: const Text(
+                                      " + Add more",
+                                      style: TextStyle(
+                                          fontSize: 15,
+                                          fontWeight: FontWeight.bold,
+                                          color: primaryColor),
+                                    ),
+                                  )
                                 ],
                               ),
-                            ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              SizedBox(
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          getCarServices(),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
                     ),
                   ],

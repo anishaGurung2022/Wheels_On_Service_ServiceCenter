@@ -1,6 +1,4 @@
 import 'dart:convert';
-import 'dart:developer';
-import 'package:get/get_connect/http/src/_http/_html/_file_decoder_html.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -77,10 +75,7 @@ class ServiceController extends GetxController {
 
   updateService(data, PickedFile? file) async {
     loading.value = true;
-    data['token'] = (await authService.getToken());
-    var url = Uri.parse(ADD_SERVICE_API);
-
-    //multipart that takes file
+    var url = Uri.parse(EDIT_SERVICE_API);
     var request = http.MultipartRequest('POST', url);
     request.fields.addAll(data);
     print(data);
@@ -95,12 +90,61 @@ class ServiceController extends GetxController {
       var decodedResponse = jsonDecode(await response.stream.bytesToString());
       if (decodedResponse['success']) {
         Get.back();
+        ServiceController();
         showMessage(message: decodedResponse["message"], title: 'Success');
       } else {
         showMessage(
             message: decodedResponse["message"],
             isSuccess: false,
             title: 'Error');
+      }
+    } else {
+      print('Request failed with status: ${response.statusCode}.');
+    }
+  }
+
+  serviceStatusOn(id) async {
+    loading.value = true;
+    var url = Uri.parse(SERVICE_STATUS_ON);
+    //var token_ = await authService.getToken();
+    var response = await http.post(url, body: {"id": id});
+    loading.value = false;
+    if (response.statusCode == 200) {
+      var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
+      if (jsonResponse["success"]) {
+        showMessage(
+            message: jsonResponse["message"],
+            isSuccess: true,
+            title: 'Service Status');
+      } else {
+        showMessage(
+            message: jsonResponse["message"],
+            isSuccess: false,
+            title: 'Success');
+      }
+    } else {
+      print('Request failed with status: ${response.statusCode}.');
+    }
+  }
+
+  serviceStatusOff(id) async {
+    loading.value = true;
+    var url = Uri.parse(SERVICE_STATUS_OFF);
+    //var token_ = await authService.getToken();
+    var response = await http.post(url, body: {"id": id});
+    loading.value = false;
+    if (response.statusCode == 200) {
+      var jsonResponse = jsonDecode(response.body) as Map<String, dynamic>;
+      if (jsonResponse["success"]) {
+        showMessage(
+            message: jsonResponse["message"],
+            isSuccess: true,
+            title: 'Service Status');
+      } else {
+        showMessage(
+            message: jsonResponse["message"],
+            isSuccess: false,
+            title: 'Success');
       }
     } else {
       print('Request failed with status: ${response.statusCode}.');

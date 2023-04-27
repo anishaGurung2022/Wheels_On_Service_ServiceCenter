@@ -5,33 +5,31 @@ import 'package:image_picker/image_picker.dart';
 import 'package:service_center/controller/category_controller.dart';
 import 'package:service_center/controller/service_controller.dart';
 import 'package:service_center/controller/serviceCenter_controller.dart';
-import 'package:service_center/model/service_model.dart';
+import 'package:service_center/model/serviceCenter_model.dart';
 import 'package:service_center/utils/constants.dart';
 import 'package:service_center/utils/shared_prefs.dart';
 import 'package:service_center/views/components/my_button.dart';
 import 'package:service_center/views/components/my_field.dart';
-import 'package:toggle_switch/toggle_switch.dart';
 
-class EditServiceForm extends StatefulWidget {
-  final Services services;
-  const EditServiceForm({super.key, required this.services});
+class EditProfileForm extends StatefulWidget {
+  final ServiceCenter serviceCenter;
+  const EditProfileForm({super.key, required this.serviceCenter});
 
   @override
-  State<EditServiceForm> createState() => _AddEditServiceFormState();
+  State<EditProfileForm> createState() => EditProfileFormState();
 }
 
-class _AddEditServiceFormState extends State<EditServiceForm> {
+class EditProfileFormState extends State<EditProfileForm> {
   final ImagePicker _picker = ImagePicker();
   AuthService authService = AuthService();
   PickedFile? pickedFile;
-  List<String> values = ['0', '1'];
-  int selectedIndex = 0;
-
+  String? _imageUrl;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _idController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
-  final TextEditingController priceController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _addressController = TextEditingController();
   final ServiceController serviceController = Get.put(ServiceController());
   final ServiceCenterController serviceCenterController =
       Get.put(ServiceCenterController());
@@ -41,13 +39,15 @@ class _AddEditServiceFormState extends State<EditServiceForm> {
   @override
   void initState() {
     super.initState();
-    _idController.text = widget.services.id;
-    _nameController.text = widget.services.name;
-    _descriptionController.text = widget.services.description;
-    priceController.text = widget.services.price.toString();
+    _idController.text = widget.serviceCenter.id;
+    _nameController.text = widget.serviceCenter.name;
+    _phoneController.text = widget.serviceCenter.phone;
+    _usernameController.text = widget.serviceCenter.userName;
+    _addressController.text = widget.serviceCenter.address;
+    _imageUrl = widget.serviceCenter.image;
   }
 
-  _AddEditServiceFormState();
+  EditProfileFormState();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -59,9 +59,9 @@ class _AddEditServiceFormState extends State<EditServiceForm> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           title: const Text(
-            "Add Service",
+            "Edit Profile",
             style: TextStyle(
-                fontSize: 30,
+                fontSize: 25,
                 fontWeight: FontWeight.w800,
                 color: backgroundColor),
           ),
@@ -82,7 +82,7 @@ class _AddEditServiceFormState extends State<EditServiceForm> {
                         SizedBox(
                             width: 365,
                             child: MyField(
-                              labelText: "Service Name",
+                              labelText: "Service Center Name",
                               controller: _nameController,
                               hintText: _nameController.text,
                               prefixIcon: const Icon(Icons.car_repair_sharp),
@@ -93,9 +93,9 @@ class _AddEditServiceFormState extends State<EditServiceForm> {
                         SizedBox(
                           width: 365,
                           child: MyField(
-                            labelText: "Service Description",
-                            controller: _descriptionController,
-                            hintText: _descriptionController.text,
+                            labelText: "Contact Number",
+                            controller: _phoneController,
+                            hintText: _phoneController.text,
                             prefixIcon: const Icon(Icons.description),
                           ),
                         ),
@@ -105,19 +105,27 @@ class _AddEditServiceFormState extends State<EditServiceForm> {
                         SizedBox(
                           width: 365,
                           child: MyField(
-                            labelText: "Price",
-                            controller: priceController,
-                            hintText: priceController.text,
-                            prefixIcon: const Icon(Icons.price_change),
+                            labelText: "User name",
+                            controller: _usernameController,
+                            hintText: _usernameController.text,
+                            prefixIcon: const Icon(Icons.person_add),
+                          ),
+                        ),
+                        SizedBox(
+                          width: 365,
+                          child: MyField(
+                            labelText: "Address",
+                            controller: _addressController,
+                            hintText: _addressController.text,
+                            prefixIcon:
+                                const Icon(Icons.location_history_sharp),
                           ),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
+                        const SizedBox(height: 15),
 
-                        const SizedBox(
-                          height: 20,
-                        ),
                         // //to make container clickable use INKWELL
                         InkWell(
                             //port where image selected
@@ -126,7 +134,7 @@ class _AddEditServiceFormState extends State<EditServiceForm> {
                                   source: ImageSource.gallery);
                               setState(() {});
                               if (pickedFile != null) {
-                                //Get.back();
+                                Get.back();
                               }
                             },
                             child: (pickedFile == null)
@@ -164,10 +172,12 @@ class _AddEditServiceFormState extends State<EditServiceForm> {
                                   var data = {
                                     "id": _idController.text,
                                     "name": _nameController.text,
-                                    "description": _descriptionController.text,
-                                    "price": priceController.text,
+                                    "phone": _phoneController.text,
+                                    "userName": _usernameController.text,
+                                    "address": _addressController.text,
                                   };
-                                  serviceController.updateService(
+                                  print(data);
+                                  serviceCenterController.updateProfile(
                                       data, pickedFile);
                                 }
                               },

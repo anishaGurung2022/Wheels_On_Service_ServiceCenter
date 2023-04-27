@@ -48,6 +48,7 @@ dependencies:
   khalti: ^1.0.2
   url_launcher: ^6.1.5
   line_awesome_flutter: ^2.0.0
+  toggle_switch: ^0.1.2
 
 dev_dependencies:
   flutter_test:
