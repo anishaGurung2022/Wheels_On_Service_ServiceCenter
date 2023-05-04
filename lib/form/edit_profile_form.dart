@@ -61,7 +61,7 @@ class EditProfileFormState extends State<EditProfileForm> {
           title: const Text(
             "Edit Profile",
             style: TextStyle(
-                fontSize: 25,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
                 color: backgroundColor),
           ),

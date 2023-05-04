@@ -102,26 +102,6 @@ class _ServicesPageState extends State<ServicesPage> {
                             ),
                           ),
                           const SizedBox(height: 20),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              const Text(
-                                'Active Status',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.bold),
-                              ),
-                              Switch(
-                                value: _switchValue,
-                                onChanged: (value) {
-                                  setState(() {
-                                    _switchValue = value;
-                                  });
-                                  // Perform any additional logic or actions here based on the new value of _switchValue
-                                },
-                              )
-                            ],
-                          ),
-                          const SizedBox(height: 5),
                           Align(
                             alignment: Alignment.bottomCenter,
                             child: Row(

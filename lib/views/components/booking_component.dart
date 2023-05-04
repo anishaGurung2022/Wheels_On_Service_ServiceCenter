@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:service_center/controller/booking_controller.dart';
 import 'package:service_center/model/booking_model.dart';
+import 'package:service_center/utils/constants.dart';
 import 'package:service_center/views/components/booking_details.dart';
 
 class BookingComponent extends StatefulWidget {
@@ -22,9 +23,9 @@ class _BookingComponentState extends State<BookingComponent> {
   BookingController bookingController = BookingController();
 
   @override
-  void initState() async {
+  void initState() {
     super.initState();
-    await bookingController.getBookingDetails(widget.bookings.id);
+    bookingController.getBookingDetails(widget.bookings.id);
   }
 
   @override
@@ -35,7 +36,7 @@ class _BookingComponentState extends State<BookingComponent> {
           Get.to(BookingDetailsPage(bookingDetailsList: bookingDetailsList))),
       child: Container(
         width: Get.width,
-        height: 170,
+        height: 250,
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
@@ -76,7 +77,9 @@ class _BookingComponentState extends State<BookingComponent> {
                       const Text(
                         "Customer Name:",
                         style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: primaryColor),
                       ),
                       Text(
                         widget.bookings.customer,
@@ -94,7 +97,9 @@ class _BookingComponentState extends State<BookingComponent> {
                       Text(
                         "Booking Date and time:",
                         style: TextStyle(
-                            fontSize: 14, fontWeight: FontWeight.bold),
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: primaryColor),
                       ),
                     ],
                   ),
@@ -106,6 +111,40 @@ class _BookingComponentState extends State<BookingComponent> {
                     widget.bookings.bookingDate.toString(),
                     style: const TextStyle(
                         fontSize: 14, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      left: 100, bottom: 0, right: 20, top: 10),
+                  child: Row(
+                    children: [
+                      const Text(
+                        "Payment Status: ",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.bold,
+                            color: primaryColor),
+                      ),
+                      Text(
+                        widget.bookings.isPaid.toString() == "1"
+                            ? 'Paid'
+                            : 'Unpaid',
+                        style: const TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  ),
+                ),
+                const Padding(
+                  padding:
+                      EdgeInsets.only(left: 160, bottom: 0, right: 15, top: 30),
+                  child: Text(
+                    "Click to see booking details",
+                    style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.bold,
+                        color: primaryColor,
+                        decoration: TextDecoration.underline),
                   ),
                 ),
               ],

@@ -85,7 +85,7 @@ class ServiceCenterController extends GetxController {
       if (decodedResponse['success']) {
         Get.back();
         getServiceCenterDetails(await authService.getToken());
-        showMessage(message: decodedResponse["message"], title: 'Success');
+        //showMessage(message: decodedResponse["message"], title: 'Success');
       } else {
         showMessage(
             message: decodedResponse["message"],

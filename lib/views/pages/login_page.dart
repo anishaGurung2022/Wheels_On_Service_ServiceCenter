@@ -119,26 +119,26 @@ class LoginPage extends StatelessWidget {
                     },
                   ),
                 ),
-                const Padding(
-                  padding:
-                      EdgeInsets.only(left: 15, bottom: 0, right: 20, top: 10),
-                  child: Align(
-                    alignment: Alignment.bottomLeft,
-                    child: Text(
-                      'forgot Password?',
-                      style: TextStyle(
-                        fontFamily: 'Segoe UI',
-                        fontSize: 18,
-                        color: Color(0xfff77931),
-                        fontWeight: FontWeight.w700,
-                        height: 3.5,
-                      ),
-                      textHeightBehavior:
-                          TextHeightBehavior(applyHeightToFirstAscent: false),
-                      softWrap: false,
-                    ),
-                  ),
-                ),
+                // const Padding(
+                //   padding:
+                //       EdgeInsets.only(left: 15, bottom: 0, right: 20, top: 10),
+                //   child: Align(
+                //     alignment: Alignment.bottomLeft,
+                //     child: Text(
+                //       'forgot Password?',
+                //       style: TextStyle(
+                //         fontFamily: 'Segoe UI',
+                //         fontSize: 18,
+                //         color: Color(0xfff77931),
+                //         fontWeight: FontWeight.w700,
+                //         height: 3.5,
+                //       ),
+                //       textHeightBehavior:
+                //           TextHeightBehavior(applyHeightToFirstAscent: false),
+                //       softWrap: false,
+                //     ),
+                //   ),
+                // ),
                 SizedBox(
                   width: 350,
                   child: MyButton(

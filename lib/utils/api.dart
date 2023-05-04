@@ -1,4 +1,4 @@
-const baseUrl = "http://192.168.1.7/wheelsOnService_api";
+const baseUrl = "http:// 172.20.10.3/wheelsOnService_api";
 //C:\Windows\scrcpy
 const LOGIN_API = "$baseUrl/serviceCenter_login.php";
 const SIGNUP_API = "$baseUrl/serviceCenter_signup.php";

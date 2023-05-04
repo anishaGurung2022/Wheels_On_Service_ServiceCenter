@@ -59,9 +59,9 @@ class _AddEditServiceFormState extends State<EditServiceForm> {
             onPressed: () => Navigator.of(context).pop(),
           ),
           title: const Text(
-            "Add Service",
+            "Edit Service",
             style: TextStyle(
-                fontSize: 30,
+                fontSize: 20,
                 fontWeight: FontWeight.w800,
                 color: backgroundColor),
           ),
@@ -171,7 +171,7 @@ class _AddEditServiceFormState extends State<EditServiceForm> {
                                       data, pickedFile);
                                 }
                               },
-                              buttonName: 'Add'),
+                              buttonName: 'Save'),
                         ),
                       ],
                     ),
